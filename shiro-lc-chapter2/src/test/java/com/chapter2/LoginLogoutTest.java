@@ -6,6 +6,8 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
+import org.apache.shiro.util.ThreadContext;
+import org.junit.After;
 import org.junit.Test;
 
 import junit.framework.Assert;
@@ -120,5 +122,10 @@ public class LoginLogoutTest {
 
         //6、退出
         subject.logout();
+    }
+	
+	@After
+    public void tearDown() throws Exception {
+        ThreadContext.unbindSubject();//退出时请解除绑定Subject到线程 否则对下次测试造成影响
     }
 }
