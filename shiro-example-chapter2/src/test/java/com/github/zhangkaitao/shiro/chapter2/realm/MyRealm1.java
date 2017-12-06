@@ -3,8 +3,6 @@ package com.github.zhangkaitao.shiro.chapter2.realm;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.realm.Realm;
 
-import java.util.List;
-
 /**
  * <p>User: Zhang Kaitao
  * <p>Date: 14-1-25
@@ -12,17 +10,14 @@ import java.util.List;
  */
 public class MyRealm1 implements Realm {
 
-    @Override
     public String getName() {
         return "myrealm1";
     }
 
-    @Override
     public boolean supports(AuthenticationToken token) {
         return token instanceof UsernamePasswordToken; //仅支持UsernamePasswordToken类型的Token
     }
 
-    @Override
     public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
         String username = (String)token.getPrincipal();  //得到用户名
